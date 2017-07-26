@@ -1,0 +1,34 @@
+#!/bin/bash
+
+REPO_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+LEDE_VERSION=lede-17.01
+LEDE_DIR=${REPO_ROOT}/${LEDE_VERSION}
+
+set -e
+
+cd ${REPO_ROOT}
+echo "Initializing submodules"
+git submodule init
+
+cd ${LEDE_DIR}
+
+echo "Checking out branch: lede-17.01"
+git fetch
+git checkout ${LEDE_VERSION}
+
+echo "Initializing LEDE Build environment"
+make defconfig
+
+echo "Installing LEDE packages"
+./scripts/feeds update -a
+./scripts/feeds install -a
+
+echo "Copying source configuration"
+cp -r ${REPO_ROOT}/src-config/. ${LEDE_DIR}
+make defconfig
+
+echo "You can now run:"
+echo "%> cd ${LEDE_DIR}"
+echo "%> make" 
+
+set +e
