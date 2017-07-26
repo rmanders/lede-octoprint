@@ -6,9 +6,9 @@ LEDE_DIR=${REPO_ROOT}/${LEDE_VERSION}
 
 set -e
 
-cd ${REPO_ROOT}
-echo "Initializing submodules"
-git submodule init
+#cd ${REPO_ROOT}
+#echo "Initializing submodules"
+#git submodule init
 
 cd ${LEDE_DIR}
 
