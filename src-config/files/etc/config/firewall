@@ -15,7 +15,7 @@ config zone
 config zone 'savedNetworks'
         option name 'wan'
         list network 'wan'
-        list network 'Polar3D'
+        list network 'wwan'
         option input 'REJECT'
         option output 'ACCEPT'
         option forward 'REJECT'
@@ -157,12 +157,14 @@ config rule
         option dest_port '5353'
         option proto 'tcpudp'
         option target 'ACCEPT'
+
 config rule
         option name 'allow repetier'
         option src 'wan'
         option dest_port '8000'
         option proto 'tcp'
         option target 'ACCEPT'
+
 config rule
 	option name 		'allow-OctoPrint'
 	option src 		'wan'
