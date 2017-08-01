@@ -1,0 +1,50 @@
+accessControl:
+  salt: bIy3ecDX4CnuvQGKzJMo7QQD8ddKVD6g
+api:
+  key: AC990BD7202A46C881FAAF1957283E86
+folder:
+  logs: /tmp/octoprint/logs
+plugins:
+  announcements:
+    _config_version: 1
+    channels:
+      _blog:
+        read_until: 1500983100
+      _important:
+        read_until: 1478614200
+      _octopi:
+        read_until: 1499253000
+      _plugins:
+        read_until: 1500768000
+      _releases:
+        read_until: 1501158300
+  cura:
+    cura_engine: /bin/CuraEngine
+  discovery:
+    upnpUuid: 01685f13-7169-4e67-a15d-71c2ce4cb2b3
+  softwareupdate:
+    _config_version: 5
+    checks:
+      octoprint:
+        checkout_folder: /opt/octoprint/git-repo
+printerProfiles:
+  default: _default
+server:
+  commands:
+    serverRestartCommand: /etc/init.d/octoprint restart
+    systemRestartCommand: reboot
+    systemShutdownCommand: poweroff
+  firstRun: false
+  secretKey: 8FeKYAcJozYhv75j8ItdGmHtDra6vN1V
+  seenWizards:
+    corewizard: null
+    cura: null
+    softwareupdate: null
+temperature:
+  profiles:
+  - bed: '94'
+    extruder: 210
+    name: ABS
+  - bed: 60
+    extruder: 180
+    name: PLA
