@@ -1,0 +1,44 @@
+#!/bin/sh /etc/rc.common
+
+# =============================================================================
+# Service start and stop script for the OctoPrint server
+# =============================================================================
+
+USE_PROCD=1
+
+START=95
+STOP=5
+PROG="/usr/bin/octoprint"
+
+OCTO_CFG="/etc/octoprint/config.yaml"
+OCTO_BASEDIR="/opt/octoprint"
+
+. /lib/functions.sh
+
+# =============================================================================
+# Writes output to the logread log under polar3d
+# =============================================================================
+logmsg() {
+    local msg="$1"
+    logger -t octoprint "$msg"
+    echo "$msg"
+}
+
+# =============================================================================
+# Start the service
+# =============================================================================
+start_service() {
+
+  logmsg "Starting octoprint..."
+  logmsg "Start Command:  '${PROG} serve -c ${OCTO_CFG} -b ${OCTO_BASEDIR}'"
+
+  procd_open_instance
+  procd_set_param user octop
+  procd_set_param env PYTHON_EGG_CACHE="${OCTO_BASEDIR}/.cache"
+  #procd_set_param respawn ${respawn_threshold:-3600} ${respawn_timeout:-5} ${respawn_retry:-5}
+  #procd_set_param stdout 1
+  #procd_set_param stderr 1
+  procd_set_param command ${PROG} serve -c ${OCTO_CFG} -b ${OCTO_BASEDIR}
+  procd_close_instance
+}
+
