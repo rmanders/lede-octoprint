@@ -5,5 +5,5 @@ chown -R octop:octop /opt/octoprint
 chmod -R ug=rwx /opt/octoprint
 
 chown -R :octop /etc/octoprint
-chmod -R g=rw /etc/octoprint
+chmod -R g=rwx /etc/octoprint
 

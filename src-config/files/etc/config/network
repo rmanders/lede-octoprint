@@ -9,6 +9,7 @@ config globals 'globals'
         option ula_prefix 'fd3e:e77e:98d2::/48'
 
 config interface 'lan'
+	option hostname 'octoprint'
         option type 'bridge'
         option proto 'static'
         option ipaddr '192.168.1.1'
@@ -16,8 +17,10 @@ config interface 'lan'
         option ip6assign '60'
 
 config interface 'wan'
+	option hostname 'octoprint'
         option ifname 'eth0'
         option proto 'dhcp'
 
 config interface 'wwan'
+	option hostname 'octoprint'
 	option proto 'dhcp'
