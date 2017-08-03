@@ -1,9 +1,11 @@
 #!/bin/sh
 
+# Set file permissions for the octop user
 mkdir -p /opt/octoprint
 chown -R octop:octop /opt/octoprint
 chmod -R ug=rwx /opt/octoprint
 
-chown -R :octop /etc/octoprint
-chmod -R g=rwx /etc/octoprint
+chown -R octop:octop /etc/octoprint
+chmod ug=rwx /etc/octoprint
+chmod ug=rw /etc/octoprint/config.yaml
 

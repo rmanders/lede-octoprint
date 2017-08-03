@@ -12,7 +12,7 @@ set -e
 
 cd ${LEDE_DIR}
 
-echo "Checking out branch: lede-17.01"
+echo "Checking out branch: ${LEDE_VERSION}"
 git fetch
 git checkout ${LEDE_VERSION}
 
@@ -20,6 +20,7 @@ echo "Initializing LEDE Build environment"
 make defconfig
 
 echo "Installing LEDE packages"
+cp ${REPO_ROOT}/src-config/feeds.conf ./ || :
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
