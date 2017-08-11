@@ -21,6 +21,7 @@ make defconfig
 
 echo "Installing LEDE packages"
 cp ${REPO_ROOT}/src-config/feeds.conf ./ || :
+cat ${LEDE_DIR}/feeds.conf.default >> ${LEDE_DIR}/feeds.conf || :
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
